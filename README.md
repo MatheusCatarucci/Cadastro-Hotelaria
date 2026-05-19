@@ -1,2 +1,136 @@
-# Cadastro-Hotelaria
-Um projeto back-end para uso de arquitetura de projeto MVC
+# 🏨 Sistema Web de Gestão Hoteleira
+
+## ✨ Sobre o Projeto
+
+**Nome do banco:** `hotelaria`
+O **Sistema Web de Gestão Hoteleira** foi criado para modernizar e facilitar a administração de hotéis, oferecendo uma solução prática para organizar as principais operações do estabelecimento.
+
+### 📌 Funcionalidades
+👥 **Hóspedes** → cadastro, edição e exclusão  
+🛏 **Quartos** → controle de disponibilidade e status  
+📅 **Reservas** → gerenciamento completo das hospedagens  
+💵 **Diárias** → cálculo estimado de valores  
+📊 **Dashboard** → visão geral do hotel  
+
+### 🚀 Diferenciais
+✔ Interface simples e intuitiva  
+✔ Arquitetura MVC bem organizada  
+✔ Integração com MySQL  
+✔ Templates dinâmicos com Jinja2  
+✔ Backend com FastAPI  
+
+### 🎯 Finalidade
+Automatizar processos manuais e tornar a gestão hoteleira mais rápida, eficiente e organizada.
+
+---
+
+<h2 align="center">💻 Tecnologias Utilizadas</h2>
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,fastapi,mysql,html,css,js" />
+</p>
+
+- **Python** → Backend
+- **FastAPI** → Desenvolvimento das rotas da API
+- **Jinja2** → Renderização dos templates
+- **MySQL** → Banco de dados
+- **HTML5/CSS3** → Estrutura e estilização
+
+---
+
+## 📂 Estrutura do Projeto
+
+```bash
+hotelaria/
+│
+├── app.py                  # Inicialização da API + rotas
+├── dao.py                  # Camada de acesso ao banco (MySQL)
+├── model.py                # Consultas
+├── db_tempo_real.py        # Exibição do banco em tempo real
+├── requirements.txt        # Dependências do projeto
+├── README.md               # Documentação
+│
+├── static/
+│   └── css/
+│       └── style.css       # Estilização do site
+│
+├── templates/
+│   ├── index.html          # Página inicial
+│   └── hospedes.html       # Dashboard hóspedes
+│
+```
+
+---
+
+## ⚙️ Instalação
+
+Para clonar e configurar o projeto, execute:
+
+```bash
+# Clonar repositório
+git clone https://github.com/seu-usuario/seu-repositorio.git
+
+# Entrar na pasta do projeto
+cd seu-repositorio
+
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar ambiente virtual
+venv\Scripts\activate.ps1
+```
+
+---
+
+## 📦 Instalação das Dependências
+
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🗄️ Configuração do Banco de Dados
+
+Crie o banco:
+
+```sql
+CREATE DATABASE hotelaria;
+```
+
+Importe o arquivo `.sql` do projeto contendo:
+
+- Criação das tabelas  
+- Relacionamentos  
+- Inserts para testes  
+
+---
+
+## 🔌 Configuração da Conexão
+
+No arquivo `dao.py`, configure:
+
+```python
+host="localhost"
+user="root"
+password="sua_senha"
+database="hotelaria"
+```
+
+---
+
+## ▶️ Executando o Projeto
+
+```bash
+fastapi dev app.py
+```
+
+Acesse no navegador:
+
+```bash
+http://127.0.0.1:8000
+```
+
+# 👨‍💻 Desenvolvedor
+|| Matheus Lima Catarucci ||
