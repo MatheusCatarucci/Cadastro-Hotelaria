@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+
+            <div class="container-top">
+                <h1>Lista de Hóspedes</h1>
+            </div>
+
+            {% for hospede in hospedes %}
+
+            <div class="container-bottom">
+                <h2>Dados de: {{ hospede["nome"] }}</h2>
+            </div>
+
+            <div class="lista">
+                <ul>
+                    <li><strong>ID:</strong> {{ hospede["id"] }}</li>
+                    <li><strong>Nome:</strong> {{ hospede["nome"] }}</li>
+                    <li><strong>Email:</strong> {{ hospede["email"] }}</li>
+                    <li><strong>Telefone:</strong> {{ hospede["telefone"] }}</li>
+                    <li><strong>CPF:</strong> {{ hospede["cpf"] }}</li>
+                </ul>
+            </div>
+            
+            <hr>
+            {% endfor %}
+            <div class="container-bottom">
+                <a href="/">← Voltar para Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
