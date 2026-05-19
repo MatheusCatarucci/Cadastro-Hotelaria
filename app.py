@@ -3,20 +3,27 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import *
+import uvicorn
 
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
 templates = Jinja2Templates(directory="templates")
 
 
 # ──────────────────────────────────────────
-# DASHBOARD
+# HOME / CADASTRO
 # ──────────────────────────────────────────
 @app.get("/", response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse(request=request, name="index.html")
+def home(request: Request, success: str = None):
+    flash = None
+    if success == "1":
+        flash = {"type": "success", "msg": "✓ Hóspede registrado com sucesso."}
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html",
+        context={"flash": flash}
+    )
 
 
 @app.post("/cadastro", response_class=HTMLResponse)
@@ -26,19 +33,25 @@ async def cadastro_hospede(
     telefone: str = Form(...),
     cpf: str = Form(...),
 ):
+    add_hospede(nome=nome, email=email, telefone=telefone, cpf=cpf)
+    return RedirectResponse(url="/?success=1", status_code=303)
 
-    id = add_hospede(nome=nome, email=email, telefone=telefone, cpf=cpf)  # só uma vez
-    return RedirectResponse(url="/", status_code=303)
 
-
-@app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request):
-
-    if not consulta_hospedes():
-        return {"Aviso":"Nenhum cliente cadastrado"}
-    else:
-        return templates.TemplateResponse(
+# ──────────────────────────────────────────
+# DASHBOARD
+# ──────────────────────────────────────────
+@app.get("/hospedes", response_class=HTMLResponse)
+async def hospedes(request: Request):
+    hospedes = consulta_hospedes()
+    return templates.TemplateResponse(
         request=request,
-        name="dashboard.html",
-        context={"hospedes": consulta_hospedes()}
+        name="hospedes.html",
+        context={"hospedes": hospedes}
     )
+
+
+# ──────────────────────────────────────────
+# ENTRYPOINT — acessível na rede local
+# ──────────────────────────────────────────
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

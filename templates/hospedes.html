@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Hóspedes — Hotel</title>
+</head>
+
+<body>
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="hotel-name">Grand Hôtel</span>
+                <span class="hotel-sub">Sistema de Gestão</span>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <nav class="sidebar-nav">
+                <span class="nav-label">Menu</span>
+
+                <a href="/" class="nav-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                    </svg>
+                    Cadastro
+                </a>
+
+                <a href="/dashboard" class="nav-item active">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    Hóspedes
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Hotelaria v1.0
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <div class="page-header">
+                <span class="eyebrow">Gestão</span>
+                <h1>Hóspedes</h1>
+                <div class="gold-line"></div>
+                <p>Todos os hóspedes registrados no sistema.</p>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-value gold">{{ hospedes | length }}</span>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="card">
+                <p class="card-title">Registros</p>
+
+                {% if hospedes %}
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>CPF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for h in hospedes %}
+                            <tr>
+                                <td><span class="badge-id">{{ h["id"] }}</span></td>
+                                <td>{{ h["nome"] }}</td>
+                                <td class="td-muted">{{ h["email"] or "—" }}</td>
+                                <td class="td-muted">{{ h["telefone"] or "—" }}</td>
+                                <td class="td-muted">{{ h["cpf"] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <p>Nenhum hóspede cadastrado ainda.</p>
+                    <a href="/" class="btn-primary">Cadastrar primeiro hóspede</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <a href="/" class="btn-ghost" style="align-self: flex-start;">
+                ← Novo cadastro
+            </a>
+
+        </main>
+    </div>
+</body>
+
+</html>
