@@ -1,6 +1,4 @@
 from dao import connection
-from datetime import date
-import os
 
 
 # ──────────────────────────────────────────

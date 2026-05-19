@@ -15,14 +15,12 @@ templates = Jinja2Templates(directory="templates")
 # HOME / CADASTRO
 # ──────────────────────────────────────────
 @app.get("/", response_class=HTMLResponse)
-def home(request: Request, success: str = None):
-    flash = None
-    if success == "1":
-        flash = {"type": "success", "msg": "✓ Hóspede registrado com sucesso."}
+def home(request: Request):
+    hospedes = consulta_hospedes()
     return templates.TemplateResponse(
         request=request,
         name="index.html",
-        context={"flash": flash}
+        context={"hospedes": hospedes}
     )
 
 
@@ -54,4 +52,4 @@ async def hospedes(request: Request):
 # ENTRYPOINT — acessível na rede local
 # ──────────────────────────────────────────
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
