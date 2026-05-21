@@ -1,6 +1,6 @@
-CREATE DATABASE hotelaria_2;
+CREATE DATABASE hotelaria;
 -- ----------------------------------------------------------------
-USE hotelaria_2;
+USE hotelaria;
 -- ----------------------------------------------------------------
 CREATE TABLE hospedes (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,12 +8,4 @@ CREATE TABLE hospedes (
     email VARCHAR (100) NULL,
     telefone VARCHAR (20) NULL,
     cpf VARCHAR (14) UNIQUE
-);
-
-INSERT INTO hospedes (nome, email, telefone, cpf)
-VALUES (
-    'Matheus',
-    'matheus.catarucci7@gmail.com',
-    '(19)9 99874-2782',
-    '15505218458'
 );
