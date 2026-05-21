@@ -47,12 +47,12 @@ async def hospedes(request: Request):
         context={"hospedes": hospedes}
     )
 
-@app.get("/adm", response_class=HTMLResponse)
+@app.get("/dashboard-adm", response_class=HTMLResponse)
 def adm(request:Request):
     hospedes_tempo_real = consulta_hospedes()
     return templates.TemplateResponse(
         request=request,
-        name="adm.html",
+        name="dashboard-adm.html",
         context={"hospedes" : hospedes_tempo_real}
     )
 
