@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import *
 import uvicorn
-from db_tempo_real import banco_atualizado
 
 app = FastAPI()
 
