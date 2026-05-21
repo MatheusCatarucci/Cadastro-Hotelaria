@@ -56,6 +56,14 @@ def adm(request:Request):
         context={"hospedes" : hospedes_tempo_real}
     )
 
+@app.get("/contagem", response_class=HTMLResponse)
+def adm(request:Request):
+    contagem = consulta_hospedes()
+    return templates.TemplateResponse(
+        request=request,
+        name="contagem.html",
+        context={"contagem" : contagem}
+    )
 
 # ──────────────────────────────────────────
 # ENTRYPOINT — acessível na rede local
