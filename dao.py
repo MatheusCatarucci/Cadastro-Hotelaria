@@ -5,7 +5,7 @@ def connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="admin",
+        password="",
         database="hotelaria",
         use_pure=True
     )

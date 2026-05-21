@@ -1,6 +1,14 @@
-from dao import connection
 import random
 import string
+import mysql.connector
+
+def connection():
+    return mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='hotelaria'
+    )
 
 conn = connection()
 

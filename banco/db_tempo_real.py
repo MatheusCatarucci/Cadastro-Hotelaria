@@ -1,6 +1,13 @@
-from dao import connection
 import time
+import mysql.connector
 
+def connection():
+    return mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='hotelaria'
+    )
 
 def banco_atualizado():
     conn = connection()

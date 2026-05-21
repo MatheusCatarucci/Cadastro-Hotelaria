@@ -9,3 +9,5 @@ CREATE TABLE hospedes (
     telefone VARCHAR (20) NULL,
     cpf VARCHAR (14) UNIQUE
 );
+
+SET GLOBAL max_allowed_packet = 1073741824; -- 1GB (máximo do MySQL)
