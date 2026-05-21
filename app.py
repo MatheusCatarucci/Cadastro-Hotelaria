@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import *
 import uvicorn
+from db_tempo_real import banco_atualizado
 
 app = FastAPI()
 
@@ -45,6 +46,15 @@ async def hospedes(request: Request):
         request=request,
         name="hospedes.html",
         context={"hospedes": hospedes}
+    )
+
+@app.get("/adm", response_class=HTMLResponse)
+def adm(request:Request):
+    hospedes_tempo_real = consulta_hospedes()
+    return templates.TemplateResponse(
+        request=request,
+        name="adm.html",
+        context={"hospedes" : hospedes_tempo_real}
     )
 
 
