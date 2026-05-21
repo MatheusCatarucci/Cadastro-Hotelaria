@@ -304,12 +304,10 @@ body {
 
 .stat-card {
     padding: 1.5rem;
-
     background: var(--bg-card);
-
+    width: 100%;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
